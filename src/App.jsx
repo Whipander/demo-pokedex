@@ -1,11 +1,7 @@
 import PokeGridDisplay from "./components/PokeGridDisplay";
 
-function App() {
-  return (
-    <>
-      <PokeGridDisplay />
-    </>
-  );
-}
+const App = () => {
+  return <PokeGridDisplay />;
+};
 
 export default App;

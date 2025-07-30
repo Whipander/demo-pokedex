@@ -1,1 +1,358 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 @import "tailwindcss";
+
+body {
+  font-family: "Press Start 2P", cursive;
+  background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body.light-theme {
+  background: linear-gradient(135deg, #ffffff, #e0eafc, #cfdef3);
+  animation: none;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.light-theme .crt-effect::before {
+  background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(200, 200, 200, 0.25) 50%);
+}
+
+.light-theme .crt-effect::after {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.crt-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-effect::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.crt-effect::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 255, 0, 0.05);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.25;
+  }
+  5% {
+    opacity: 0.2;
+  }
+  10% {
+    opacity: 0.25;
+  }
+  15% {
+    opacity: 0.15;
+  }
+  20% {
+    opacity: 0.25;
+  }
+  25% {
+    opacity: 0.1;
+  }
+  30% {
+    opacity: 0.25;
+  }
+  35% {
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 0.25;
+  }
+  45% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  55% {
+    opacity: 0.2;
+  }
+  60% {
+    opacity: 0.25;
+  }
+  65% {
+    opacity: 0.15;
+  }
+  70% {
+    opacity: 0.25;
+  }
+  75% {
+    opacity: 0.1;
+  }
+  80% {
+    opacity: 0.25;
+  }
+  85% {
+    opacity: 0.15;
+  }
+  90% {
+    opacity: 0.25;
+  }
+  95% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+
+.pixel-border {
+  border: 4px solid;
+  border-image: linear-gradient(45deg, #8a8a8a, #3a3a3a) 1;
+  box-shadow: 0 0 0 2px #000, 0 0 0 4px #8a8a8a, 0 0 0 6px #000;
+  image-rendering: pixelated;
+}
+
+.light-theme .pixel-border {
+  border-image: linear-gradient(45deg, #c0c0c0, #a0a0a0) 1;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #c0c0c0, 0 0 0 6px #fff;
+}
+
+.pixel-button {
+  background: linear-gradient(to bottom, #8a8a8a, #3a3a3a);
+  border: 2px solid #000;
+  box-shadow: inset -2px -2px 0 #5a5a5a, inset 2px 2px 0 #bababa;
+  color: #000;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.6rem;
+  padding: 8px 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.pixel-button:active {
+  box-shadow: inset 2px 2px 0 #5a5a5a, inset -2px -2px 0 #bababa;
+  transform: translate(2px, 2px);
+}
+
+.pixel-button:hover:not(:active) {
+  background: linear-gradient(to bottom, #9a9a9a, #4a4a4a);
+}
+
+.light-theme .pixel-button {
+  background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+  border: 2px solid #000;
+  box-shadow: inset -2px -2px 0 #a0a0a0, inset 2px 2px 0 #ffffff;
+  color: #000;
+}
+
+.light-theme .pixel-button:active {
+  box-shadow: inset 2px 2px 0 #a0a0a0, inset -2px -2px 0 #ffffff;
+  transform: translate(2px, 2px);
+}
+
+.light-theme .pixel-button:hover:not(:active) {
+  background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+}
+
+.retro-green {
+  background-color: #0a5f38;
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+.retro-blue {
+  background-color: #001f3f;
+  color: #0074d9;
+  text-shadow: 0 0 5px #0074d9;
+}
+
+.retro-yellow {
+  background-color: #ffdc00;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
+  font-weight: bold;
+}
+
+.retro-red {
+  background-color: #85144b;
+  color: #ff4136;
+  text-shadow: 0 0 5px #ff4136;
+  font-weight: bold;
+}
+
+.retro-purple {
+  background-color: #581845;
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff;
+  font-weight: bold;
+}
+
+.retro-gray {
+  background-color: #808080;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
+  font-weight: bold;
+}
+
+.retro-pink {
+  background-color: #ff69b4;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
+  font-weight: bold;
+}
+
+
+.light-theme .retro-green {
+  background-color: #a8e6cf;
+  color: #0a5f38;
+  text-shadow: none;
+}
+
+.light-theme .retro-blue {
+  background-color: #a0d8ef;
+  color: #001f3f;
+  text-shadow: none;
+}
+
+.light-theme .retro-yellow {
+  background-color: #fffac0;
+  color: #806000;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+.light-theme .retro-red {
+  background-color: #f4978e;
+  color: #85144b;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+.light-theme .retro-purple {
+  background-color: #d8bfd8;
+  color: #581845;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+.light-theme .retro-gray {
+  background-color: #d3d3d3;
+  color: #404040;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+.light-theme .retro-pink {
+  background-color: #ffc0cb;
+  color: #c71585;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+
+.light-theme .bg-yellow-800 {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+}
+
+.light-theme .bg-yellow-900 {
+  background-color: #fde68a !important;
+  color: #92400e !important;
+}
+
+
+.light-theme .bg-gray-900 {
+  background-color: #e5e7eb !important;
+  color: #4b5563 !important;
+}
+
+
+.light-theme .bg-purple-900 {
+  background-color: #e9d5ff !important;
+  color: #7e22ce !important;
+}
+
+
+.light-theme .bg-gray-400 {
+  background-color: #f3f4f6 !important;
+  color: #4b5563 !important;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border: 2px solid #000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00cc00;
+}
+
+.light-theme ::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+  background: #808080;
+  border: 2px solid #fff;
+}
+
+.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
