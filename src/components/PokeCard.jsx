@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 const typeColors = {
   grass: "retro-green",
@@ -30,24 +30,54 @@ const getTypeClass = (types) => {
 
 const PokemonId = ({ id, isDark }) => (
   <div className="w-full text-right mb-2">
-    <span className={`text-xs font-mono px-2 py-1 rounded ${isDark ? "bg-black text-green-400" : "bg-gray-200 text-gray-800"}`}>
+    <span
+      className={`text-xs font-mono px-2 py-1 rounded ${
+        isDark ? "bg-black text-green-400" : "bg-gray-200 text-gray-800"
+      }`}
+    >
       #{String(id).padStart(3, "0")}
     </span>
   </div>
 );
 
-const PokemonImage = ({ sprite, name, isDark }) => (
-  <div className={`w-32 h-32 flex items-center justify-center mb-4 pixel-border ${isDark ? "bg-black bg-opacity-30" : "bg-gray-100"}`}>
-    <img
-      src={sprite}
-      alt={`${name} GIF`}
-      className="w-full h-full object-contain drop-shadow-lg pixelated"
-    />
-  </div>
-);
+const PokemonImage = ({ sprite, name, isDark }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  return (
+    <div
+      className={`w-32 h-32 flex items-center justify-center mb-4 pixel-border relative ${
+        isDark ? "bg-black bg-opacity-30" : "bg-gray-100"
+      }`}
+    >
+      {!imageLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="animate-pulse flex space-x-2">
+            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+          </div>
+        </div>
+      )}
+      <img
+        src={sprite}
+        alt={`${name} GIF`}
+        className={`w-full h-full object-contain drop-shadow-lg pixelated transition-opacity duration-300 ${
+          imageLoaded ? "opacity-100" : "opacity-0"
+        }`}
+        onLoad={() => setImageLoaded(true)}
+        onError={() => setImageLoaded(true)}
+        loading="lazy"
+      />
+    </div>
+  );
+};
 
 const PokemonName = ({ name, isDark }) => (
-  <div className={`text-lg font-bold capitalize mb-3 tracking-wide text-center truncate w-full px-2 ${isDark ? "text-gray-300" : "text-gray-800"}`}>
+  <div
+    className={`text-lg font-bold capitalize mb-3 tracking-wide text-center truncate w-full px-2 ${
+      isDark ? "text-gray-300" : "text-gray-800"
+    }`}
+  >
     {name}
   </div>
 );
@@ -68,11 +98,19 @@ const PokemonTypes = ({ types, typeClass }) => (
 const PokemonStats = ({ height, weight, isDark }) => (
   <div className="w-full mb-3">
     <div className="grid grid-cols-2 gap-2 text-xs">
-      <div className={`flex px-2 py-1 justify-between rounded ${isDark ? "bg-black bg-opacity-20" : "bg-gray-200"}`}>
+      <div
+        className={`flex px-2 py-1 justify-between rounded ${
+          isDark ? "bg-black bg-opacity-20" : "bg-gray-200"
+        }`}
+      >
         <span>HT:</span>
         <span>{height / 10}m</span>
       </div>
-      <div className={`flex px-2 py-1 justify-between rounded ${isDark ? "bg-black bg-opacity-20" : "bg-gray-200"}`}>
+      <div
+        className={`flex px-2 py-1 justify-between rounded ${
+          isDark ? "bg-black bg-opacity-20" : "bg-gray-200"
+        }`}
+      >
         <span>WT:</span>
         <span>{weight / 10}kg</span>
       </div>
@@ -100,9 +138,13 @@ const PokeCard = ({ pokemon, theme = "dark" }) => {
   `;
 
   return (
-    <div className={cardClasses.trim().replace(/\s+/g, ' ')}>
+    <div className={cardClasses.trim().replace(/\s+/g, " ")}>
       <PokemonId id={id} isDark={isDark} />
-      <PokemonImage sprite={sprites.other.showdown.front_default} name={name} isDark={isDark} />
+      <PokemonImage
+        sprite={sprites.other.showdown.front_default}
+        name={name}
+        isDark={isDark}
+      />
       <PokemonName name={name} isDark={isDark} />
       <PokemonTypes types={types} typeClass={typeClass} />
       <PokemonStats height={height} weight={weight} isDark={isDark} />
