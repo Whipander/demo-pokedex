@@ -13,7 +13,7 @@ body {
 
 body.light-theme {
   background: linear-gradient(135deg, #ffffff, #e0eafc, #cfdef3);
-  animation: none;
+  animation: gradientBG 15s ease infinite;
 }
 
 @keyframes gradientBG {
@@ -26,11 +26,6 @@ body.light-theme {
   100% {
     background-position: 0% 50%;
   }
-}
-
-
-.light-theme .crt-effect::before {
-  background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(200, 200, 200, 0.25) 50%);
 }
 
 .light-theme .crt-effect::after {
@@ -240,7 +235,6 @@ body.light-theme {
   font-weight: bold;
 }
 
-
 .light-theme .retro-green {
   background-color: #a8e6cf;
   color: #0a5f38;
@@ -288,7 +282,6 @@ body.light-theme {
   font-weight: bold;
 }
 
-
 .light-theme .bg-yellow-800 {
   background-color: #fef3c7 !important;
   color: #92400e !important;
@@ -299,18 +292,15 @@ body.light-theme {
   color: #92400e !important;
 }
 
-
 .light-theme .bg-gray-900 {
   background-color: #e5e7eb !important;
   color: #4b5563 !important;
 }
 
-
 .light-theme .bg-purple-900 {
   background-color: #e9d5ff !important;
   color: #7e22ce !important;
 }
-
 
 .light-theme .bg-gray-400 {
   background-color: #f3f4f6 !important;
@@ -346,7 +336,6 @@ body.light-theme {
 .light-theme ::-webkit-scrollbar-thumb:hover {
   background: #a0a0a0;
 }
-
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
